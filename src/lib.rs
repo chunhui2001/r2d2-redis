@@ -32,6 +32,7 @@ impl error::Error for Error {
     fn description(&self) -> &str {
         match *self {
             Error::Other(ref err) => err.description(),
+            // Error::Other(ref err) => &err.to_string(),
         }
     }
 
@@ -40,7 +41,7 @@ impl error::Error for Error {
             Error::Other(ref err) => {
                 #[allow(deprecated)] // `cause` is replaced by `Error:source` in 1.33
                 err.cause()
-            },
+            }
         }
     }
 }
